@@ -38,6 +38,9 @@ jobs:
 
     - name: cloning git repo
       run: git clone https://github.com/anand-nanwana14/rancher-cicd.git
+      
+    - name: list contents
+      run: ls -R
 
     - name: Rancher Kubernetes Deployment
       run: |
