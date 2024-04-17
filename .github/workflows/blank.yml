@@ -1,0 +1,41 @@
+name: Deploy to Rancher Kubernetes
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Login to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build Docker image
+      run: docker build -t anand-nanwana14/rancher-cicd .
+
+    - name: Push Docker image to Docker Hub
+      run: docker push anand-nanwana14/rancher-cicd
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    needs: build
+
+    steps:
+    - name: Install kubectl
+      uses: steebchen/kubectl@v1
+      with:
+        version: latest
+
+    - name: Rancher Kubernetes Deployment
+      run: |
+        kubectl apply -f your-kubernetes-manifest.yml --server=${{ secrets.rancher_server }} --token=${{ secrets.rancher_token }}
