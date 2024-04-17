@@ -20,10 +20,10 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build Docker image
-      run: docker build -t anand-nanwana14/rancher-cicd .
+      run: docker build -t anandnanwana14/rancher-cicd .
 
     - name: Push Docker image to Docker Hub
-      run: docker push anand-nanwana14/rancher-cicd
+      run: docker push anandnanwana14/rancher-cicd
 
   deploy:
     runs-on: ubuntu-latest
