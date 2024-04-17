@@ -44,4 +44,4 @@ jobs:
 
     - name: Rancher Kubernetes Deployment
       run: |
-        kubectl apply -f ./rancher-cicd/deployment.yaml --server=${{secrets.RANCHER_SERVER}} --token=${{ secrets.RANCHER_TOKEN }} 
+        kubectl apply -f ./rancher-cicd/deployment.yaml --server=https://44.211.197.187/k8s/clusters/local --token=${{ secrets.RANCHER_TOKEN }} 
