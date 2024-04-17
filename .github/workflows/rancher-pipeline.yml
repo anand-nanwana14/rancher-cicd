@@ -38,4 +38,4 @@ jobs:
 
     - name: Rancher Kubernetes Deployment
       run: |
-        kubectl apply -f your-kubernetes-manifest.yml --server=${{ secrets.rancher_server }} --token=${{ secrets.rancher_token }}
+        kubectl apply -f your-kubernetes-manifest.yml --server=${{ secrets.RANCHER_SERVER }} --token=${{ secrets.RANCHER_TOKEN }}
