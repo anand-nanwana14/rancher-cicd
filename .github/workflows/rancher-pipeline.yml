@@ -32,10 +32,10 @@ jobs:
 
     steps:
     - name: Install kubectl
-      uses: steebchen/kubectl@v1
-      with:
-        version: latest
+      run: |
+        curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" 
+        sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
     - name: Rancher Kubernetes Deployment
       run: |
-        kubectl apply -f your-kubernetes-manifest.yml --server=${{ secrets.RANCHER_SERVER }} --token=${{ secrets.RANCHER_TOKEN }}
+        kubectl apply -f deployment.yml --server=${{ secrets.RANCHER_SERVER }} --token=${{ secrets.RANCHER_TOKEN }}
