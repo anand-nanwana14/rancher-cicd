@@ -44,4 +44,4 @@ jobs:
 
     - name: Rancher Kubernetes Deployment
       run: |
-        kubectl apply -f ./rancher-cicd/deployment.yaml --server=${{ secrets.RANCHER_SERVER }} --token=${{ secrets.RANCHER_TOKEN }} --insecure-skip-tls-verify
+        kubectl apply -f ./rancher-cicd/deployment.yaml --server="http://44.203.177.222/k8s/clusters/local" --token=${{ secrets.RANCHER_TOKEN }} --insecure-skip-tls-verify
